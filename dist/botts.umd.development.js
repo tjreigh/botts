@@ -850,7 +850,6 @@
       blue = pkg.blue,
       magenta = pkg.magenta,
       green = pkg.green;
-  var LogLevel;
 
   (function (LogLevel) {
     LogLevel[LogLevel["Error"] = 0] = "Error";
@@ -858,12 +857,12 @@
     LogLevel[LogLevel["Info"] = 2] = "Info";
     LogLevel[LogLevel["Debug"] = 3] = "Debug";
     LogLevel[LogLevel["Verbose"] = 4] = "Verbose";
-  })(LogLevel || (LogLevel = {}));
+  })(exports.LogLevel || (exports.LogLevel = {}));
 
   var Logger = /*#__PURE__*/function () {
     function Logger(level) {
       if (level === void 0) {
-        level = LogLevel.Info;
+        level = exports.LogLevel.Info;
       }
 
       this.colors = [red, yellow, blue, magenta, green];
@@ -874,12 +873,12 @@
 
     _proto.emit = function emit(message, level) {
       if (level === void 0) {
-        level = LogLevel.Info;
+        level = exports.LogLevel.Info;
       }
 
-      if (typeof level == 'string') level = LogLevel[level];
+      if (typeof level == 'string') level = exports.LogLevel[level];
       if (level > this.level) return;
-      console.log(this.colors[level]("[" + LogLevel[level] + "]"), message.toString());
+      console.log(this.colors[level]("[" + exports.LogLevel[level] + "]"), message.toString());
     };
 
     return Logger;
@@ -944,7 +943,7 @@
               case 12:
                 _context.prev = 12;
                 _context.t0 = _context["catch"](0);
-                throw this.logger.emit("Uncaught error while attempting init sequence: \n" + _context.t0, LogLevel.Error);
+                throw this.logger.emit("Uncaught error while attempting init sequence: \n" + _context.t0, exports.LogLevel.Error);
 
               case 15:
               case "end":
@@ -974,7 +973,7 @@
                 commandFiles = fs.readdirSync(this.commandFolder).filter(function (file) {
                   return file.endsWith('.js');
                 });
-                this.logger.emit("commandfiles = " + commandFiles, LogLevel.Verbose);
+                this.logger.emit("commandfiles = " + commandFiles, exports.LogLevel.Verbose);
                 _loop = /*#__PURE__*/runtime_1.mark(function _loop() {
                   var _command$aliases;
 
@@ -986,9 +985,9 @@
                           file = _step.value;
                           fullPath = path.resolve(path.join(_this3.commandFolder, file));
 
-                          _this3.logger.emit("fullPath = " + fullPath, LogLevel.Verbose);
+                          _this3.logger.emit("fullPath = " + fullPath, exports.LogLevel.Verbose);
 
-                          _this3.logger.emit("Attempting to register commands in " + fullPath, LogLevel.Debug);
+                          _this3.logger.emit("Attempting to register commands in " + fullPath, exports.LogLevel.Debug);
 
                           command = void 0;
                           _context2.prev = 5;
@@ -1006,10 +1005,10 @@
                           _context2.prev = 13;
                           _context2.t2 = _context2["catch"](5);
 
-                          _this3.logger.emit("Error while registering commands: \n" + _context2.t2, LogLevel.Error);
+                          _this3.logger.emit("Error while registering commands: \n" + _context2.t2, exports.LogLevel.Error);
 
                         case 16:
-                          _this3.logger.emit("command = " + command.name, LogLevel.Verbose);
+                          _this3.logger.emit("command = " + command.name, exports.LogLevel.Verbose);
 
                           _this3.commands.set(command.name, command);
 
@@ -1093,7 +1092,7 @@
                           _this4[once ? 'once' : 'on'](eName, function () {
                             event.run.apply(event, arguments);
 
-                            _this4.logger.emit("dispatched event with name " + eName, LogLevel.Debug);
+                            _this4.logger.emit("dispatched event with name " + eName, exports.LogLevel.Debug);
                           });
 
                         case 10:
@@ -1180,7 +1179,7 @@
                 }
 
                 hasCmd = this.commands.has(args[0]);
-                this.logger.emit("hasCmd " + hasCmd, LogLevel.Verbose);
+                this.logger.emit("hasCmd " + hasCmd, exports.LogLevel.Verbose);
 
                 if (hasCmd) {
                   _context6.next = 17;
@@ -1191,7 +1190,7 @@
 
               case 17:
                 this.commands["delete"](args[0]);
-                this.logger.emit(Array.from(this.commands.keys()).toString(), LogLevel.Verbose);
+                this.logger.emit(Array.from(this.commands.keys()).toString(), exports.LogLevel.Verbose);
                 message.reply('unloaded');
                 _context6.next = 26;
                 break;
@@ -1209,7 +1208,7 @@
                 message.reply('reinit');
 
               case 26:
-                this.logger.emit("commandKeys = " + Array.from(this.commands.keys()).join(', ').toString(), LogLevel.Verbose); // Simpler search mentioned in registerCommands()
+                this.logger.emit("commandKeys = " + Array.from(this.commands.keys()).join(', ').toString(), exports.LogLevel.Verbose); // Simpler search mentioned in registerCommands()
 
                 cmd = this.commands.find(function (cmd) {
                   return cmd.name === command;
@@ -1220,7 +1219,7 @@
                   break;
                 }
 
-                throw this.logger.emit("Could not find command with name " + command, LogLevel.Warning);
+                throw this.logger.emit("Could not find command with name " + command, exports.LogLevel.Warning);
 
               case 30:
                 if (!(cmd.ownerOnly && !this.owners.includes(message.author.id))) {
@@ -1232,7 +1231,7 @@
 
               case 32:
                 cmd.run(message, args);
-                this.logger.emit("dispatched command with name " + cmd.name, LogLevel.Debug);
+                this.logger.emit("dispatched command with name " + cmd.name, exports.LogLevel.Debug);
 
               case 34:
               case "end":
