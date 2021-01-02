@@ -135,7 +135,9 @@ export class BotClass extends Client {
 		}
 
 		this.logger.emit(
-			`commandKeys = ${Array.from(this.commands.keys()).join(', ').toString()}`,
+			`commandKeys = ${Array.from(this.commands.keys())
+				.join(', ')
+				.toString()}`,
 			LogLevel.Verbose
 		);
 

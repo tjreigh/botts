@@ -11,6 +11,6 @@ export abstract class Command {
 	aliases?: string[];
 	ownerOnly?: boolean = false;
 	abstract description: string;
-	abstract run(message: Message, args: string[]): Promise<Message | void>;
+	abstract run(message: Message, args: string[]): Promise<Message | void> | void;
 	protected shouldHandle = true;
 }
