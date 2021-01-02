@@ -1,0 +1,25 @@
+name: Rebuild on push (CI)
+on: push
+jobs:
+  build:
+    name: Rebuild and commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@v2
+      - name: Install deps
+        run: yarn install
+      - name: Build package
+        run: yarn build
+      - name: Check if rebuilding resulted in changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+      - name: Commit build files
+        if: steps.changes.outputs.changed == 1
+        run: |
+          git config --global user.name "Trevor R"
+          git config --global user.email "tjdoescode@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add dist/
+          git commit -m "ci(publish): *AUTO* rebuild source"
+          git push origin main
