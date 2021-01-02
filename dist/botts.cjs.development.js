@@ -1286,4 +1286,5 @@ var Event = function Event(client) {
 exports.BotClass = BotClass;
 exports.Command = Command;
 exports.Event = Event;
+exports.Logger = Logger;
 //# sourceMappingURL=botts.cjs.development.js.map

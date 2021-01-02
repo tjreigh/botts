@@ -1258,5 +1258,5 @@ var Event = function Event(client) {
   this.client = client;
 };
 
-export { BotClass, Command, Event };
+export { BotClass, Command, Event, Logger };
 //# sourceMappingURL=botts.esm.js.map

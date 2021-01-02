@@ -1265,6 +1265,7 @@
   exports.BotClass = BotClass;
   exports.Command = Command;
   exports.Event = Event;
+  exports.Logger = Logger;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
