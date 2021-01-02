@@ -5,8 +5,8 @@ export abstract class Event {
 		this.client = client;
 	}
 
-	client!: BotClass;
+	client: BotClass;
+	once: boolean = false;
 	abstract name: string;
-	abstract once: boolean;
 	abstract run(...args: any[]): void;
 }
