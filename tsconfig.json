@@ -1,0 +1,18 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Node 14",
+
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "./src",
+		"module": "esnext",
+		"target": "esnext",
+		"strict": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitThis": false,
+		"lib": ["esnext"]
+	}
+}
