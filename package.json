@@ -9,10 +9,10 @@
 	"license": "MIT",
 	"repository": "github:TJDoesCode/botts",
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^4.11.1",
-		"@typescript-eslint/parser": "^4.11.1",
-		"eslint": "^7.17.0",
-		"typescript": "^4.1.3"
+		"@typescript-eslint/eslint-plugin": "4.11.1",
+		"@typescript-eslint/parser": "4.11.1",
+		"eslint": "7.17.0",
+		"typescript": "4.1.3"
 	},
 	"scripts": {
 		"build": "tsdx build --format esm --target node"
