@@ -54,7 +54,7 @@ export class BotClass extends Client {
 			}, 30000);
 		} catch (error) {
 			throw this.logger.emit(
-				`Uncaught error while attempting init sequence: \n${error}`,
+				`Uncaught error while attempting init sequence: \n${error.stack ?? error}`,
 				LogLevel.Error
 			);
 		}
@@ -73,7 +73,10 @@ export class BotClass extends Client {
 			try {
 				command = new (await import(fullPath)).default(this);
 			} catch (error) {
-				this.logger.emit(`Error while registering commands: \n${error}`, LogLevel.Error);
+				this.logger.emit(
+					`Error while registering commands: \n${error.stack ?? error}`,
+					LogLevel.Error
+				);
 			}
 
 			this.logger.emit(`command = ${command.name}`, LogLevel.Verbose);

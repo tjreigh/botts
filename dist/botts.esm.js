@@ -59,7 +59,9 @@ class BotClass extends Client {
         this.logger.emit(`[ws] Heartbeat ping: ${this.ws.ping}`);
       }, 30000);
     } catch (error) {
-      throw this.logger.emit(`Uncaught error while attempting init sequence: \n${error}`, LogLevel.Error);
+      var _error$stack;
+
+      throw this.logger.emit(`Uncaught error while attempting init sequence: \n${(_error$stack = error.stack) != null ? _error$stack : error}`, LogLevel.Error);
     }
   }
 
@@ -78,7 +80,9 @@ class BotClass extends Client {
       try {
         command = new (await import(fullPath)).default(this);
       } catch (error) {
-        this.logger.emit(`Error while registering commands: \n${error}`, LogLevel.Error);
+        var _error$stack2;
+
+        this.logger.emit(`Error while registering commands: \n${(_error$stack2 = error.stack) != null ? _error$stack2 : error}`, LogLevel.Error);
       }
 
       this.logger.emit(`command = ${command.name}`, LogLevel.Verbose);
