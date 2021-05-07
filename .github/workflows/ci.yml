@@ -13,7 +13,7 @@ jobs:
         run: yarn build
       - name: Check if rebuilding resulted in changes
         id: changes
-        uses: UnicornGlobal/has-changes-action@v1.0.11
+        uses: UnicornGlobal/has-changes-action@v1.0.12
       - name: Commit build files
         if: steps.changes.outputs.changed == 1
         run: |
