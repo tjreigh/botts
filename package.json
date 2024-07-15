@@ -9,8 +9,8 @@
 	"license": "MIT",
 	"repository": "github:TJDoesCode/botts",
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "7.16.0",
-		"@typescript-eslint/parser": "7.16.0",
+		"@typescript-eslint/eslint-plugin": "7.16.1",
+		"@typescript-eslint/parser": "7.16.1",
 		"eslint": "9.7.0",
 		"typescript": "5.5.3"
 	},
