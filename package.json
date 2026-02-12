@@ -21,7 +21,7 @@
 	"dependencies": {
 		"@types/node": "^14.14.17",
 		"chalk": "^4.1.0",
-		"discord.js": "^12.5.1",
+		"discord.js": "^14.0.0",
 		"tsdx": "^0.14.1"
 	}
 }
