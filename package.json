@@ -19,7 +19,7 @@
 	},
 	"description": "",
 	"dependencies": {
-		"@types/node": "^14.14.17",
+		"@types/node": "^24.0.0",
 		"chalk": "^4.1.0",
 		"discord.js": "^12.5.1",
 		"tsdx": "^0.14.1"
